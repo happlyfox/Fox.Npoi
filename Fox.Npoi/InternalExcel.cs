@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace Fox.Npoi
 {
-    public interface IInternalExcel : IBasicWrite
+    public interface IInternalExcel : IWrite
     {
         IWorkbook GetWorkbook();
     }

@@ -2,7 +2,7 @@
 
 namespace Fox.Npoi.Core
 {
-    public interface IBasicWrite
+    public interface IWrite
     {
         void CreateRow(int sheetIndex, int rowIndex);
 

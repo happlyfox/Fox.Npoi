@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Fox.Npoi
 {
-    public class Excel : IRead, IBasicWrite, IStyle
+    public class Excel : IRead, IWrite, IStyle
     {
         public readonly InternalExcel InternalExcel;
 
