@@ -109,9 +109,9 @@
 	rowIndex++;
 	foreach (var dep in DataUtils.GetDepartList())
 	{
-		excel.CreateRow(0, rowIndex);
-		excel.WriteProperty<Depart>(dep, 0, rowIndex, 0, 3);
-		rowIndex++;
+	excel.CreateRow(0, rowIndex);
+	excel.WriteProperty<Depart>(dep, 0, rowIndex, 0, 3);
+	rowIndex++;
 	}
 	excel.SetColumnWidth(0, 0, new[] { 5, 30 });
 	excel.WriteFile(Path.Combine(appPath, "Depart4.xlsx"));
