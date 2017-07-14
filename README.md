@@ -51,7 +51,7 @@
 	excel.WriteFile(Path.Combine(appPath, "Depart2.xlsx"));
 	}
 
-# 基本导出+样式
+# 基本导出+默认样式
 	/// <summary>
 	/// 导出标准数据 默认样式【加边框线】
 	/// </summary>
@@ -63,9 +63,9 @@
 	int rowIndex = 0;
 	foreach (var dep in DataUtils.GetDepartList())
 	{
-		excel.CreateRow(0, rowIndex);
-		excel.WriteProperty<Depart>(dep, 0, rowIndex);
-		rowIndex++;
+	excel.CreateRow(0, rowIndex);
+	excel.WriteProperty<Depart>(dep, 0, rowIndex);
+	rowIndex++;
 	}
 	
 	excel.SetColumnWidth(0, 0, new[] { 5, 30 });
@@ -78,22 +78,22 @@
 	/// </summary>
 	public class OwnStyle : DefaultStyle
 	{
-		public override void RegisterTitleStyle(IWorkbook workbook, ICellStyle cellStyle)
-		{
-		cellStyle.SetBorder();
-		cellStyle.SetBackgroundColor(HSSFColor.Yellow.Index);
-		cellStyle.SetFont(workbook.GetFontAt(1));
-		}
+	public override void RegisterTitleStyle(IWorkbook workbook, ICellStyle cellStyle)
+	{
+	cellStyle.SetBorder();
+	cellStyle.SetBackgroundColor(HSSFColor.Yellow.Index);
+	cellStyle.SetFont(workbook.GetFontAt(1));
+	}
 
-		public override void RegisterCustomStyle(IWorkbook workbook)
-		{
-		//styleIndex = 3 【字体加粗】
-		ICellStyle cellStyle = workbook.CreateCellStyle();
-		IFont font = workbook.CreateFont();
-		font.Boldweight = (short)FontBoldWeight.Bold;
-		cellStyle.SetFont(font);
-		RegisterContentStyle(workbook, cellStyle);
-		}
+	public override void RegisterCustomStyle(IWorkbook workbook)
+	{
+	//styleIndex = 3 【字体加粗】
+	ICellStyle cellStyle = workbook.CreateCellStyle();
+	IFont font = workbook.CreateFont();
+	font.Boldweight = (short)FontBoldWeight.Bold;
+	cellStyle.SetFont(font);
+	RegisterContentStyle(workbook, cellStyle);
+	}
 	}
 
 	/// <summary>
@@ -101,21 +101,21 @@
 	/// </summary>
 	public static void Basic4()
 	{
-			var excel = new Excel(new OwnStyle());
-			excel.CreateSheet("部门表");
+	var excel = new Excel(new OwnStyle());
+	excel.CreateSheet("部门表");
 
-			int rowIndex = 0;
-			excel.WriteTitle(new string[] { "id", "部门名称" }, 0, 0, 0);
-			rowIndex++;
-			foreach (var dep in DataUtils.GetDepartList())
-			{
-				excel.CreateRow(0, rowIndex);
-				excel.WriteProperty<Depart>(dep, 0, rowIndex, 0, 3);
-				rowIndex++;
-			}
-			excel.SetColumnWidth(0, 0, new[] { 5, 30 });
-			excel.WriteFile(Path.Combine(appPath, "Depart4.xlsx"));
+	int rowIndex = 0;
+	excel.WriteTitle(new string[] { "id", "部门名称" }, 0, 0, 0);
+	rowIndex++;
+	foreach (var dep in DataUtils.GetDepartList())
+	{
+		excel.CreateRow(0, rowIndex);
+		excel.WriteProperty<Depart>(dep, 0, rowIndex, 0, 3);
+		rowIndex++;
 	}
+	excel.SetColumnWidth(0, 0, new[] { 5, 30 });
+	excel.WriteFile(Path.Combine(appPath, "Depart4.xlsx"));
+}
 
 # 复杂导出
 	/// <summary>
@@ -135,19 +135,19 @@
 
 	for (int i = 0; i < user.Count; i++)
 	{
-		if (user[i].DepId != midDep)
-		{
-				endIndex = rowIndex - 1;
-				//合并单元格
-				excel.SetStyle(0, startIndex, endIndex, 2, 2, 0);
-				startIndex = endIndex + 1;
-				midDep = user[i].DepId;
-				i--;
-				continue;
-		}
-		excel.CreateRow(0, rowIndex);
-		excel.WriteProperty(user[i], 0, rowIndex);
-		rowIndex++;
+	if (user[i].DepId != midDep)
+	{
+			endIndex = rowIndex - 1;
+			//合并单元格
+			excel.SetStyle(0, startIndex, endIndex, 2, 2, 0);
+			startIndex = endIndex + 1;
+			midDep = user[i].DepId;
+			i--;
+			continue;
+	}
+	excel.CreateRow(0, rowIndex);
+	excel.WriteProperty(user[i], 0, rowIndex);
+	rowIndex++;
 	}
 
 	//合并单元格
