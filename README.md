@@ -137,13 +137,13 @@
 	{
 	if (user[i].DepId != midDep)
 	{
-			endIndex = rowIndex - 1;
-			//合并单元格
-			excel.SetStyle(0, startIndex, endIndex, 2, 2, 0);
-			startIndex = endIndex + 1;
-			midDep = user[i].DepId;
-			i--;
-			continue;
+	endIndex = rowIndex - 1;
+	//合并单元格
+	excel.SetStyle(0, startIndex, endIndex, 2, 2, 0);
+	startIndex = endIndex + 1;
+	midDep = user[i].DepId;
+	i--;
+	continue;
 	}
 	excel.CreateRow(0, rowIndex);
 	excel.WriteProperty(user[i], 0, rowIndex);
