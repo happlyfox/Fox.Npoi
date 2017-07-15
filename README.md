@@ -4,9 +4,7 @@
 
 NuGet
 
-您可以使用NuGet来快速地将Fox.NPOI添加到您的项目中。只需搜索Fox.NPOI并安装软件包。
-
-或者使用指令 install-package fox.npoi
+您可以使用NuGet来快速地将Fox.NPOI添加到您的项目中。只需搜索Fox.NPOI并安装软件包。或者使用指令 install-package fox.npoi
 
 # Fox.Npoi介绍
 
@@ -21,17 +19,18 @@ NuGet
 实例化Excel文件时，描述当前Excel文件的样式，而不是在创建文件后，单独对每一种样式进行设置。做到一次设置，多次使用。
     
 # 模板
-		public class Depart
-		{
-		[Description("部门id")]
-		public int DepId { get; set; }
+	public class Depart
+	{
+	[Description("部门id")]
+	public int DepId { get; set; }
 
-		[Description("部门名称")]
-		public string DepName { get; set; }
-		}
+	[Description("部门名称")]
+	public string DepName { get; set; }
+	}
 
 
 # 基本导出
+
 	private static readonly string appPath = AppDomain.CurrentDomain.BaseDirectory;
 
 	/// <summary>
